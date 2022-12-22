@@ -34,6 +34,7 @@ namespace Mos.xAPI.DemoUsageApp
                     StatementObject
                         .CreateActivity("http://www.example.com/meetings/occurances/34534")
                         .WithActivityType("http://adlnet.gov/expapi/activities/meeting")
+                        .WithActivityInteractionType("choice")
                         .AddName("en-GB", "example meeting")
                         .AddName("en-US", "example meeting")
                         .AddDescription("en-GB", "An example meeting that happened on a specific occasion with certain people present.")
@@ -111,7 +112,9 @@ namespace Mos.xAPI.DemoUsageApp
                         .AddDisplay("en-US", "sent"),
                     StatementObject.CreateActivity("http://example.com/xapi/activity/simplestatement")
                                    .AddName("en-US", "simple statement")
-                                   .AddDescription("en-US", "A simple Experience API statement. Note that the LRS does not need to have any prior information about the Actor(learner), the verb, or the Activity / object.")).Build();
+                                   .AddDescription("en-US", "A simple Experience API statement. Note that the LRS does not need to have any prior information about the Actor(learner), the verb, or the Activity / object.")
+                                   .WithActivityType("http://example.com/tjohoo")
+                                   ).Build();
 
             return statement;
         }

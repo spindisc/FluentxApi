@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Mos.xApi.Objects
 {
@@ -20,6 +18,11 @@ namespace Mos.xApi.Objects
         /// The type of Activity.
         /// </summary>
         private Uri _activityType;
+
+        /// <summary>
+        /// The ADL interaction type of Activity.
+        /// </summary>
+        private string _activityInteractionType;
 
         /// <summary>
         /// A description of the Activity
@@ -153,7 +156,7 @@ namespace Mos.xApi.Objects
             ActivityDefinition definition = null;
             if (HasActivityDefinition())
             {
-                definition = new ActivityDefinition(_nameLanguageMap, _activityType, _descriptionLanguageMap, _moreInfo, _extensions);
+                definition = new ActivityDefinition(_nameLanguageMap, _activityType, _descriptionLanguageMap, _moreInfo, _extensions, _activityInteractionType);
             }
 
             return new Activity(_id, definition);
@@ -174,6 +177,17 @@ namespace Mos.xApi.Objects
         public IActivityBuilder WithActivityType(Uri type)
         {
             _activityType = type;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the ADL interaction type of activity.
+        /// </summary>
+        /// <param name="adlInteractionType">The string that defines the ADL interaction type of the Activity.</param>
+        /// <returns>The activity builder, to continue the fluent configuration.</returns>
+        public IActivityBuilder WithActivityInteractionType(string adlInteractionType)
+        {
+            _activityInteractionType = adlInteractionType;
             return this;
         }
 

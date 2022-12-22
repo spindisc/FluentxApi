@@ -59,6 +59,13 @@ namespace Mos.xApi.Objects
         IActivityBuilder WithActivityType(Uri type);
 
         /// <summary>
+        /// Sets the ADL interaction type of activity.
+        /// </summary>
+        /// <param name="adlInteractionType">The string that defines the ADL interaction type of the Activity.</param>
+        /// <returns>The activity builder, to continue the fluent configuration.</returns>
+        IActivityBuilder WithActivityInteractionType(string adlInteractionType);
+
+        /// <summary>
         /// Sets more info IRI. The IRI should resolves to a document with human-readable 
         /// information about the Activity, which could include a way to launch the activity.
         /// </summary>

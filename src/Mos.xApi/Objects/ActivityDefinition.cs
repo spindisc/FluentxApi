@@ -17,7 +17,7 @@ namespace Mos.xApi.Objects
         /// <param name="description">A description of the Activity</param>
         /// <param name="moreInfo">Resolves to a document with human-readable information about the Activity, which could include a way to launch the activity.</param>
         /// <param name="extensions">A map of other properties as needed</param>
-        public ActivityDefinition(ILanguageMap name, Uri type, ILanguageMap description = null, Uri moreInfo = null, Extension extensions = null)
+        public ActivityDefinition(ILanguageMap name, Uri type, ILanguageMap description = null, Uri moreInfo = null, Extension extensions = null, string interactionType = null)
         {
             if (name != null && name.Any())
             {
@@ -36,7 +36,7 @@ namespace Mos.xApi.Objects
             
             Type = type;
             MoreInfo = moreInfo;
-            
+            InteractionType = interactionType;
         }
 
         /// <summary>
@@ -62,6 +62,12 @@ namespace Mos.xApi.Objects
         /// </summary>
         [JsonProperty("type", Order = 2, NullValueHandling = NullValueHandling.Ignore)]
         public Uri Type { get; }
+
+        /// <summary>
+        /// Gets the ADL interaction type of Activity.
+        /// </summary>
+        [JsonProperty("interactionType", Order = 5, NullValueHandling = NullValueHandling.Ignore)]
+        public string InteractionType { get; }
 
         /// <summary>
         /// Gets a map of other properties as needed
